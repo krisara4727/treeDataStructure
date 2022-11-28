@@ -46,7 +46,7 @@ function NewNode(props: any) {
   }
   return (
     <div className="flex justify-center items-center fixed top-0 left-0 w-screen h-screen modalblur">
-      <div className="absolute md:w-1/2 bg-white text-black modal p-4 flex flex-col gap-4">
+      <div className="absolute w-full md:w-1/2 bg-white text-black modal p-4 flex flex-col gap-4">
         <div className="flex items-center mb-3">
           <p className="flex-1 font-bold text-lg text-center">
             <span className="text-purple-700 capitalize">
@@ -61,7 +61,7 @@ function NewNode(props: any) {
             X
           </p>
         </div>
-        <div className="flex gap-4 justify-center mb-4">
+        <div className="flex gap-4 justify-center mb-4 flex-wrap">
           <Button
             variant="contained"
             color="success"
@@ -95,22 +95,22 @@ function NewNode(props: any) {
         </div>
         {currentTab === "AddChild" && (
           <>
-            <div className="flex w-full px-4 items-center">
+            <div className="flex w-full gap-2 px-4 items-center">
               <p>Child Name:</p>
               <input
                 onChange={(e) => setname(e.target.value)}
                 value={name}
-                className="ml-2 flex-1 border border-zinc-800 rounded p-1"
+                className="flex-1 border border-zinc-800 rounded p-1"
               ></input>
             </div>
-            <div className="flex w-full px-4 items-center">
+            <div className="flex w-full px-4 items-center gap-2">
               <p>Child Image:</p>
               <input
                 // onChange={(e) => setname(e.target.value)}
                 // value={name}
                 type="file"
                 disabled={true}
-                className="ml-2 flex-1 border border-zinc-800 rounded p-1"
+                className=" flex-1 border border-zinc-800 rounded p-1"
               ></input>
             </div>
             <div className="flex justify-end gap-2 mt-3">

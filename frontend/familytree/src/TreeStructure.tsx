@@ -99,11 +99,11 @@ function TreeStructure() {
       </div>
       <div
         ref={parent}
-        className="overflow-auto text-black cursor-pointer flex flex-col items-center"
+        className="overflow-auto text-black cursor-pointer "
         id="container"
       >
         <p
-          className="w-24 h-24 flex justify-center items-center font-bold capitalize rounded-full  bg-black text-white"
+          className="w-24 h-24 flex justify-center items-center mx-auto font-bold capitalize rounded-full  bg-black text-white"
           onClick={() =>
             addNewNode({
               name: tree.name,
