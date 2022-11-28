@@ -67,7 +67,7 @@ public class NodeServiceImpl implements NodeService {
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+//    @Transactional(rollbackFor = Exception.class)
     public void deleteNodes(int treeId, int nodeId)  {
         // ... perform validations etc.
         List<Node> nodes = nodeRepository.getSubTree(treeId, nodeId, 1L).orElseThrow(NotFoundException::new);

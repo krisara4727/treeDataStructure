@@ -2,7 +2,7 @@ import { Add } from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAll, url } from "./Apicalls";
+import { createTreeOrNode, getAll, url } from "./Apicalls";
 import Card from "./Card";
 
 function Homepage() {
@@ -13,18 +13,28 @@ function Homepage() {
     navigate("/trees/" + item);
   };
   useEffect(() => {
-    async function getallTrees() {
-      const result: any = await getAll();
-      if (result.status === 200) settrees(result.data);
-    }
     getallTrees();
   }, []);
+
+  async function getallTrees() {
+    const result: any = await getAll();
+    if (result.status === 200) settrees(result.data);
+  }
+
+  const handleCreateTree = async () => {
+    const result: any = await createTreeOrNode({
+      name: "root",
+      parentId: [],
+      treeId: null,
+    });
+    if (result.status === 200) getallTrees();
+  };
 
   return (
     <div className="w-screen h-screen bg-dark text-slate-100 p-4 ">
       <div className="px-4 py-2 bg-black mb-4  flex items-center">
         <p className="flex-1 font-bold">TreeData View</p>
-        <span className="cursor-pointer">
+        <span className="cursor-pointer" onClick={() => handleCreateTree()}>
           Create Tree <Add />
         </span>
       </div>

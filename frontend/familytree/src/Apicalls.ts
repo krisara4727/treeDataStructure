@@ -15,7 +15,18 @@ export const getByTwoId = async (treeId: number, nodeId: number) => {
   console.log(result);
 };
 
-export const createTreeOrNode = async () => {
-  const result = await axios.post(url);
-  console.log(result);
+export const createTreeOrNode = async (props: any) => {
+  const { name, parentId, treeId } = props;
+  return await axios.post(url + "/", {
+    name: name,
+    parentId:
+      parentId && Array.isArray(parentId) && parentId.length > 0
+        ? parentId
+        : [],
+    treeId: treeId,
+  });
+};
+
+export const deleteNode = async (treeId: number, nodeId: number) => {
+  return await axios.delete(url + "/" + treeId + "/" + nodeId);
 };
